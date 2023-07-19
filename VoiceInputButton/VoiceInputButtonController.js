@@ -32,7 +32,12 @@
                     }
                     var pause = Math.floor(Math.random() * 5 + 1) * 1000; // random pause between 1 and 5 seconds
                     setTimeout(function() {
-                        descriptionField.set("v.value", descriptionField.get("v.value") + transcript); // append the transcript to the existing value
+                        if(descriptionField.get("v.value")){
+                            descriptionField.set("v.value", descriptionField.get("v.value") + transcript); // append the transcript to the existing value
+                        }
+                        else{
+                            descriptionField.set("v.value", transcript);
+                        }
                     }, pause);
                 };
                 recognition.onend = function() {
