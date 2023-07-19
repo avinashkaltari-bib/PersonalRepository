@@ -1,0 +1,15 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome" access="global" controller="VoiceInputButtonController">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="case" type="Case"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Description"
+                      targetFields="{!v.case}"
+                      />
+    <lightning:button variant="brand" label="🎤" onclick="{!c.startRecording}" aura:id="micButton"/>
+    <lightning:textarea label="Description" value="{!v.case.Description}" aura:id="descriptionField"/>
+    <lightning:button variant="brand" label="Clear" onclick="{!c.clearDescription}"/>
+    <lightning:button variant="brand" label="Save" onclick="{!c.saveRecord}"/>
+    <!-- lightning:button variant="brand" label="Cancel" onclick="{!c.cancelOperation}"/ -->
+</aura:component>
